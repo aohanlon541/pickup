@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    background-color: slategray;
+}
+
+.panel {
+    margin: 100px;
+    padding: 50px 100px 100px 100px;
+    border: 3px black solid
+}
+
+h2 {
+    font-size: 75px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+label {
+    font-size: 25px
+}
+
+.form-control {
+    height: 50px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 10px 50px;
+    font-size: 25px;
+}
