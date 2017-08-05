@@ -5,8 +5,10 @@ var path = require('path');
 var router = express.Router();
 
 router.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname+'/../htmlFiles_toBeDeleted/login.html'));
+  // res.sendFile(path.join(__dirname+'/../htmlFiles_toBeDeleted/login.html'));
+  res.render(path.join(__dirname+'/../views/logIn.handlebars'));
 });
+
 
 
 
