@@ -3,18 +3,21 @@
     font-family: avenir;
 }
 
-.game {
+#profile {
     display: flex;
     flex-direction: row;
     margin: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px black solid
 }
 
-.pickUpInfo {
+#profileText {
     padding-left: 20px;
 }
 
-.playerNum {
-    color: red;
+h2 {
+    font-size: 60px
+}
+
+#profileText p {
+    font-size: 30px;
 }
