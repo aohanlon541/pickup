@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    font-family: avenir;
+}
+
+#profile {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding-bottom: 10px;
+}
+
+#profileText {
+    padding-left: 20px;
+}
+
+h2 {
+    font-size: 60px
+}
+
+#profileText p {
+    font-size: 30px;
+}
