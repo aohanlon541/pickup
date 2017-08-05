@@ -1,0 +1,33 @@
+{
+  "name": "pickup",
+  "version": "1.0.0",
+  "description": "This is a web application for meeting up to play sports",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aohanlon541/pickup.git"
+  },
+  "keywords": [
+    "mvc",
+    "nodejs",
+    "express",
+    "handlebars",
+    "mysql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aohanlon541/pickup/issues"
+  },
+  "homepage": "https://github.com/aohanlon541/pickup#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "path": "^0.12.7"
+  }
+}
