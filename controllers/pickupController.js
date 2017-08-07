@@ -14,7 +14,7 @@ router.get("/index", function(req, res) {
   res.render(path.join(__dirname+'/../views/index.handlebars'));
 });
 
-router.get("/profile", function(req, res) {
+router.get("/profileno", function(req, res) {
   // res.sendFile(path.join(__dirname+'/../htmlFiles_toBeDeleted/profile.html'));
   res.render(path.join(__dirname+'/../views/profile.handlebars'));
 });
