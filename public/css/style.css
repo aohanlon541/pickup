@@ -18,3 +18,16 @@
 .playerNum {
     color: red;
 }
+
+.btn-danger {
+    height: 50px;
+    margin: auto auto;
+}
+
+.btn-success {
+    width: 92%;
+    text-align: center;
+    margin: 20px 40px;
+    padding: 20px;
+    font-size: 25px;
+}
