@@ -1,33 +1,66 @@
-* {
-    box-sizing: border-box;
-    font-family: avenir;
-}
-
-.game {
-    display: flex;
-    flex-direction: row;
-    margin: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px black solid
-}
-
-.pickUpInfo {
-    padding-left: 20px;
-}
-
-.playerNum {
-    color: red;
-}
-
-.btn-danger {
-    height: 50px;
-    margin: auto auto;
-}
-
-.btn-success {
-    width: 92%;
-    text-align: center;
-    margin: 20px 40px;
-    padding: 20px;
-    font-size: 25px;
-}
+    * {
+        box-sizing: border-box;
+        font-family: avenir;
+    }
+    
+    .game {
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px black solid
+    }
+    
+    .pickUpInfo {
+        padding-left: 20px;
+    }
+    
+    .playerNum {
+        color: red;
+    }
+    
+    .btn-danger {
+        height: 50px;
+        margin: auto auto;
+    }
+    
+    .btn-success {
+        width: 92%;
+        text-align: center;
+        margin: 20px 40px;
+        padding: 20px;
+        font-size: 25px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .modal-content p {
+        padding-top: 10px;
+    }
+    
+    .navbar-form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    
+    .navbar {
+        margin-bottom: 0;
+    }
+    
+    .navbar-form button {
+        margin: 10px auto;
+    }
+    
+    .sportNarrowDropDown {
+        margin: 0 auto;
+    }
+    
+    #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+    }
