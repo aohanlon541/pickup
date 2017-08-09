@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 
+
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(express.static("public"));
 
 // block helpers
+// swaps out css files for correct pages
 var hbs = exphbs({
     defaultLayout: 'main',
     helpers: {
@@ -26,7 +28,8 @@ var hbs = exphbs({
             return null;
         }
     }
-})
+});
+
 
 app.engine('handlebars', hbs);
 app.set('view engine', 'handlebars');

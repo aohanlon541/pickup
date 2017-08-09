@@ -10,9 +10,13 @@
         <div class="panel-body">
             <h2>Sign Up!</h2>
             <form>
-                <div class="form-group">
+                {{!-- <div class="form-group">
                     <label for="username">Username </label>
                     <input type="username" class="form-control" id="usernameInput" placeholder="Username">
+                </div> --}}
+                <div class="form-group">
+                {{input type="text" value=object.username}}
+                {{App.NumberField min='1' value=object.count}} 
                 </div>
                 <div class="form-group">
                     <label for="email">Email </label>
