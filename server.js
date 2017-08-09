@@ -1,53 +1,7 @@
-<<<<<<< HEAD
-// require
-var express = require("express");
-var exphbs = require("express-handlebars");
-// express server
-var app = express();
-// engines
-
-var hbs = exphbs.create({
-    defaultLayout: 'main',
-    helpers: {
-        section: function (name, options) {
-            if (!this._sections) this._sections = {};
-            this._sections[name] = options.fn(this);
-            return null;
-        }
-    }
-})
-
-
-
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-var css = {}
-var port = 3000;
-// console.log("pick up");
-app.listen(port);
-
-app.get("/", function (req, res) {
-    res.render("logIn")
-});
-
-app.get("/index", function (req, res) {
-    res.render("index")
-});
-
-app.get("/profile", function (req, res) {
-    res.render("profile")
-});
-
-
-
-
-
-
-
-=======
 var express = require('express');
 var bodyParser = require('body-parser');
-// var exphbs = require('express-handlebars');
+var exphbs = require('express-handlebars');
+
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -63,8 +17,22 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 //Static directory to be served
 app.use(express.static("public"));
 
-// app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
+// block helpers
+// swaps out css files for correct pages
+var hbs = exphbs({
+    defaultLayout: 'main',
+    helpers: {
+        section: function (name, options) {
+            if (!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    }
+});
+
+
+app.engine('handlebars', hbs);
+app.set('view engine', 'handlebars');
 
 var routes = require('./controllers/pickupController.js');
 app.use('/', routes);
@@ -74,4 +42,4 @@ app.use('/', routes);
         console.log('Live at port ' + PORT);
     });
 // });
->>>>>>> ce7d4ed127693ba822de77450ec35ac65f2a4295
+
