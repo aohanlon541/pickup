@@ -47,13 +47,13 @@ create table games(
 insert into games (location, sport, active, maxNumPlayers, start, end) 
 	values ("zilker park", "ultimate frisbee", false, 22, "2017-08-08 16:000", null), 
 	("zilker park", "soccer", false, 13, "2017-08-08 18:000", null), 
-	("gregory gym", "basketball", false, 10, null, null), 
+	("pease park", "basketball", false, 10, null, null), 
 	("pease park", "volleyball", false, 6, "2017-08-14 7:000",null), 
-	("riverside disk golf", "disk golf", false, 4, "2017-09-08 14:000",null), 
+	("auditorium shores", "soccer", false, 4, "2017-09-08 14:000",null), 
 	("pease park", "soccer", false, 6, "2018-08-08 18:000", null), 
 	("zilker park", "soccer", false, 12, "2017-11-08 18:000", null), 
-	("gregory gym", "volleyball", false, 8, "2017-12-12 14:000", null), 
+	("pease park", "volleyball", false, 8, "2017-12-12 14:000", null), 
 	("zilker park", "volleyball", false, 8, "2017-09-12 12:030", null), 
-	("riverside disk golf", "disk golf", false, 4, "2017-11-08 18:000", null);
+	("auditorium shores", "ultimate frisbee", false, 4, "2017-11-08 18:000", null);
 
 
