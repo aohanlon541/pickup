@@ -47,25 +47,12 @@
 
             {{!-- handlebars  block expression--}}
              {{#each game}}
-                {{!-- {{#if "basketball"}}
-                <img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" alt ="something">
-                {{/if}}
-                {{#if "soccer"}}
-                <img src="https://image.flaticon.com/icons/png/512/53/53283.png" alt ="something">
-                {{/if}}                  --}}
-                <p><a href={{img}}></a><p>
-                {{!-- <p><script><a {{img}}></a></script></p> --}}
+                <p class = "i"><img src={{img}} width=75% height=75%></img><p>
                 <h2>Park: {{parkName}}</h2>
                 <p>{{sport}}</p>
                 <p><span class="playerNum">{{playerNum}}</span> players are here.</p>
             {{/each}} 
-            {{!--handlebars   --}}
-
-        {{!-- <img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" width="15%" height="15%">
-        <div class="pickUpInfo">
-            <h2>Park Name</h2>
-            <p>Basketball</p>
-            <p><span class="playerNum">4</span> players are here</p> --}}
+            {{!--handlebars   --}} 
         </div>
     </div>
 
