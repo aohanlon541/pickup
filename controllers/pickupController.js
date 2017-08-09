@@ -14,10 +14,22 @@ var games = [
 //   res.render("index",{game:games});
 // });
 
+// load login page
 router.get("/", function(req, res) {
-
   res.render("logIn");
 });
+
+router.post("/", function(req, res) {
+  profile.create([
+    "email", "password", "passwordTwo", "imageUrl"
+  ], [
+    req.body.name, req.body.password, req.body.passwordTwo, req.body.imageUrl
+  ], function() {
+    res.redirect("/index");
+  });
+});
+
+
 
 router.get("/index/:sport?", function(req, res) {
   res.render("index");
