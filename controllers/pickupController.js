@@ -19,18 +19,18 @@ router.get("/", function(req, res) {
   res.render("logIn");
 });
 
-router.post("/", function(req, res) {
+router.get("/signup", function(req,res) {
+  res.render("signup");
+});
+
+router.post("/signup", function(req, res) {
   profile.create([
     "firstName", "lastName", "userName", "email", "password", "imageUrl"
   ], [
     req.body.firstName, req.body.lastName, req.body.userName, req.body.email, req.body.passweord, req.body.imageUrl
   ], function() {
-    res.redirect("/index");
+    res.redirect("/logIn");
   });
-});
-
-router.get("/signup", function(req,res) {
-  res.render("signup");
 });
 
 router.get("/index/:sport?", function(req, res) {
