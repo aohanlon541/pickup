@@ -21,15 +21,13 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   profile.create([
-    "email", "password", "passwordTwo", "imageUrl"
+    "firstName", "lastName", "userName", "email", "password", "imageUrl"
   ], [
-    req.body.name, req.body.password, req.body.passwordTwo, req.body.imageUrl
+    req.body.firstName, req.body.lastName, req.body.userName, req.body.email, req.body.passweord, req.body.imageUrl
   ], function() {
     res.redirect("/index");
   });
 });
-
-
 
 router.get("/index/:sport?", function(req, res) {
   res.render("index");
