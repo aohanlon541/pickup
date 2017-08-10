@@ -67,23 +67,20 @@ var map, infoWindow;
 
       	
 
-function initialize() {
+// function initialize() {
+//     $('#show-map').click(function () {
+//          var mapOptions = {
+// 	    center: { lat: 0, lng: 0 },
+// 	    zoom: 8
+// 	};
+// 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+//     });
+// }
 
-    //Add the event listener after Google Mpas and window is loaded
-    $('#show-map').click(function () {
-         var mapOptions = {
-	    center: { lat: 0, lng: 0 },
-	    zoom: 8
-	};
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    });
-}
+// google.maps.event.addDomListener(window, 'load', initialize);
 
-google.maps.event.addDomListener(window, 'load', initialize);
 
-module.exports
-
-//       // Insert into HTML file
-//     // <script async defer
-//     // src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcJmdtAXR1uxhLwobke4lqqKQmfuSw8VQ&callback=initMap">
-//     // </script>
+// //       // Insert into HTML file
+//     <script async defer
+//     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcJmdtAXR1uxhLwobke4lqqKQmfuSw8VQ&callback=initMap">
+//     </script>
