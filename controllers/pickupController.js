@@ -29,6 +29,10 @@ router.post("/", function(req, res) {
   });
 });
 
+router.get("/signup", function(req,res) {
+  res.render("signup");
+});
+
 router.get("/index/:sport?", function(req, res) {
   res.render("index");
 });
