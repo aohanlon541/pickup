@@ -5,9 +5,10 @@ var map, infoWindow;
       function initMap() {
 
         let park_coordinates = [
-          {lat: 30.2665, lng: -97.748},
-          {lat: 30.2670, lng: -97.739},
-          {lat: 30.2665, lng: -97.747},
+          // {lat: 30.2665, lng: -97.748},
+          {lat: 30.2845, lng: -97.7541},
+          {lat: 30.2670, lng: -97.7729},
+          {lat: 30.2627, lng: -97.7515},
         ];
 
         map = new google.maps.Map(document.getElementById('map'), {
