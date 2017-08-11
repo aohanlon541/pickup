@@ -1,3 +1,6 @@
+var Sequelize = require("sequelize");
+// var sequelize = 
+
 module.exports = function(sequelize, DataTypes) {
   var Games = sequelize.define("games", {
     location: {
