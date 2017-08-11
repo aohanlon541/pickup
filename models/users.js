@@ -1,4 +1,39 @@
-// Dependencies
+module.exports = function(sequelize, DataTypes) {
+  var Users = sequelize.define("users", {
+    firstName: {
+      type: Sequelize.STRING, allowNull: false
+    },
+    lastName: {
+      type: Sequelize.STRING, allowNull: false
+    },
+    email: {
+      type: Sequelize.STRING, allowNull: false
+    },
+    username: {
+      type: Sequelize.STRING, allowNull: false, unique: true
+    },
+    password: {
+      type: Sequelize.STRING, allowNull: false
+    },
+    imageUrl: {
+      type: Sequelize.STRING
+    },
+    numWins:{
+      type: Sequelize.INTEGER
+    },
+    numLosses:{
+      type: Sequelize.INTEGER
+    }
+    });
+  return Users;
+};
+
+
+
+
+
+
+/*// Dependencies
 // =============================================================
 
 // This may be confusing but here Sequelize (capital) references the standard library
@@ -61,5 +96,7 @@ Users.sync();
 Games.sync();
 
 // Makes the Chirp Model available for other files (will also create a table)
-module.exports = Users;
-module.exports = Games;
+module.exports = {
+  Users,
+  Games
+};*/

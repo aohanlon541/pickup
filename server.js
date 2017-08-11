@@ -6,7 +6,7 @@ var exphbs = require('express-handlebars');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// var db = require('./models');
+var db = require('./models/tables');
 
 //Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -30,6 +30,8 @@ var hbs = exphbs({
     }
 });
 
+//db.sequelize.sync({ force: true }).then(function)
+
 
 app.engine('handlebars', hbs);
 app.set('view engine', 'handlebars');
@@ -37,9 +39,9 @@ app.set('view engine', 'handlebars');
 var routes = require('./controllers/pickupController.js');
 app.use('/', routes);
 
-// db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log('Live at port ' + PORT);
     });
-// });
+});
 
