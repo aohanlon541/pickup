@@ -12,8 +12,8 @@ var map, infoWindow;
         ];
 
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          center: {lat: 30.2871, lng: -97.7292},
+          zoom: 13
         });
 
         add_markers_to_map(map, park_coordinates);
