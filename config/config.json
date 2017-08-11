@@ -1,11 +1,4 @@
 {
-    "development": {
-        "username": "root",
-        "password": "3037775643",
-        "database": "todolist",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
     "games": {
         "username": "root",
         "password": "3037775643",
@@ -19,6 +12,12 @@
         "database": "pickup_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
+    },
+    "development": {
+        "username": "root",
+        "password": "3037775643",
+        "database": "pickup_db",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
     }
-
 }

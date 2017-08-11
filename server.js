@@ -18,7 +18,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("public"));
 
 // block helpers
-// swaps out css files for correct pages
+// swaps out css files for correct page
 var hbs = exphbs({
     defaultLayout: 'main',
     helpers: {

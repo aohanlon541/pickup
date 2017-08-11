@@ -1,6 +1,5 @@
 var Sequelize = require("sequelize");
 
-
 module.exports = function(sequelize, DataTypes) {
     var Users = sequelize.define("users", {
         firstName: {

@@ -41,14 +41,22 @@ router.get("/profile/:username?", function(req, res) {
     res.render("profile");
 });
 
-router.post("/", function(req, res) {
-    games.create([
+
+router.post("/index?:sport?:park?:num", function(req, res) {
+    // function getUrlParameter(name) {
+    //     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    //     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    //     var results = regex.exec(location.search);
+    //     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    // };
+    // console.log(getUrlParameter(park));
+    Games.create([
         "location", "sport", "active", "maxNumPlayers"
     ], [
-        req.body.location, req.body.sport, true, req.body.maxPlayers
+        getUrlParameter(park), getUrlParameter(sport), true, getUrlParameter(num)
     ], function() {
         console.log("Game added")
-        res.redirect("/index");
+        res.redirect("/index/:sport?");
     });
 });
 
