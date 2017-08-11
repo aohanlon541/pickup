@@ -45,7 +45,7 @@ router.post("/newgame", function(req, res) {
     profile.create([
         "location", "sport", "active", "maxNumPlayers"
     ], [
-        req.body.location, req.body.sport, true, req.body.maxPlayers,
+        req.body.location, req.body.sport, true, req.body.maxPlayers
     ], function() {
         res.redirect("/logIn");
     });
