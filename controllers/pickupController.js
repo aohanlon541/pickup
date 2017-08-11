@@ -41,13 +41,14 @@ router.get("/profile/:username?", function(req, res) {
     res.render("profile");
 });
 
-router.post("/newgame", function(req, res) {
-    profile.create([
+router.post("/", function(req, res) {
+    games.create([
         "location", "sport", "active", "maxNumPlayers"
     ], [
         req.body.location, req.body.sport, true, req.body.maxPlayers
     ], function() {
-        res.redirect("/logIn");
+        console.log("Game added")
+        res.redirect("/index");
     });
 });
 
