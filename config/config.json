@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Brevoun@17",
-    "database": "todolist",
+    "password": "3037775643",
+    "database": "pickup_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

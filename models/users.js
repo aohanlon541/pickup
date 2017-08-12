@@ -25,6 +25,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     numLosses:{
       type: Sequelize.INTEGER
+    },
+    inGame: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     }
     });
     return Users;

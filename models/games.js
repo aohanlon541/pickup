@@ -10,14 +10,15 @@ module.exports = function(sequelize, DataTypes) {
     active: {
       type: Sequelize.BOOLEAN, allowNull: false
     },
+    activePlayers: {
+      type: Sequelize.INTEGER, allowNull: false
+    },
     maxNumPlayers: {
       type: Sequelize.INTEGER, allowNull: false,
     },
-    start: {
-      type: Sequelize.DATE
-    },
-    end: {
-      type: Sequelize.DATE
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   });
   return Games;
