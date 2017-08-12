@@ -1,6 +1,8 @@
 var express = require('express');
 var path = require('path');
-var db = require('../models');
+var db = require('../models/index.js');
+
+// import the users db
 
 var router = express.Router();
 
@@ -26,13 +28,18 @@ router.get("/signup", function(req, res) {
 });
 
 router.post("/signup", function(req, res) {
-    profile.create([
-        "firstName", "lastName", "userName", "email", "password", "imageUrl"
-    ], [
-        req.body.firstName, req.body.lastName, req.body.userName, req.body.email, req.body.passweord, req.body.imageUrl
-    ], function() {
-        res.redirect("/logIn");
-    });
+  console.log("here");
+  db.Users.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    username: req.body.userName,
+    email: req.body.email,
+    password: req.body.password,
+    imageUrl: req.body.imageUrl
+  }).then( 
+  function() {
+    res.redirect("index");
+  });
 });
 
 router.get("/index/:sport?", function(req, res) {
