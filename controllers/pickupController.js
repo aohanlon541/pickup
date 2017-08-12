@@ -1,8 +1,10 @@
 var express = require('express');
 var path = require('path');
-var db = require('../models/index.js');
+var db = require('../models');
 
 var router = express.Router();
+
+// var games = require('../models/tables.js').Games;
 
 // var set up to fill in html, export from a js page?
 var games = [
@@ -34,7 +36,39 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/index/:sport?", function(req, res) {
-    res.render("index");
+  var sports = [
+    {sport: 'Basketball',
+     chosen: false},
+     {sport: 'Ultimate',
+      chosen: false
+     },
+    {sport: 'Soccer',
+     chosen: false
+    },
+    {sport: 'Football',
+     chosen: false
+    }
+  ];
+
+  if(req.query.sport !== undefined) {
+      db.Games.findAll({
+        where: {
+          sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
+          active: true
+        }
+      }).then(function(games){
+        for(var s in sports) {
+          if(sports[s].sport === req.query.sport) {
+            sports[s].chosen = true;
+          }
+        }
+      });
+  }
+  
+  var sportsObj = {
+    sports: sports
+  };
+  res.render("index", sportsObj);
 });
 
 router.get("/profile/:username?", function(req, res) {
