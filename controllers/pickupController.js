@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-// var db = require('../models');
+var db = require('../models/index.js');
 
 var router = express.Router();
 
@@ -41,20 +41,14 @@ router.get("/profile/:username?", function(req, res) {
     res.render("profile");
 });
 
-
-router.post("/index?:sport?:park?:num", function(req, res) {
-    // function getUrlParameter(name) {
-    //     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    //     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    //     var results = regex.exec(location.search);
-    //     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    // };
-    // console.log(getUrlParameter(park));
-    Games.create([
-        "location", "sport", "active", "maxNumPlayers"
-    ], [
-        getUrlParameter(park), getUrlParameter(sport), true, getUrlParameter(num)
-    ], function() {
+router.post("/index", function(req, res) {
+    console.log(req.body);
+    db.Games.create({
+        location: req.body.park,
+        sport: req.body.sport,
+        active: true,
+        maxNumPlayers: req.body.num
+    }).then(function() {
         console.log("Game added")
         res.redirect("/index/:sport?");
     });
