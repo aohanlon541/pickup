@@ -36,39 +36,43 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/index/:sport?", function(req, res) {
-  var sports = [
-    {sport: 'Basketball',
-     chosen: false},
-     {sport: 'Ultimate',
-      chosen: false
-     },
-    {sport: 'Soccer',
-     chosen: false
-    },
-    {sport: 'Football',
-     chosen: false
-    }
-  ];
+    var sports = [{
+            sport: 'Basketball',
+            chosen: false
+        },
+        {
+            sport: 'Ultimate',
+            chosen: false
+        },
+        {
+            sport: 'Soccer',
+            chosen: false
+        },
+        {
+            sport: 'Football',
+            chosen: false
+        }
+    ];
 
-  if(req.query.sport !== undefined) {
-      db.Games.findAll({
-        where: {
-          sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
-          active: true
-        }
-      }).then(function(games){
-        for(var s in sports) {
-          if(sports[s].sport === req.query.sport) {
-            sports[s].chosen = true;
-          }
-        }
-      });
-  }
-  
-  var sportsObj = {
-    sports: sports
-  };
-  res.render("index", sportsObj);
+    if (req.query.sport !== undefined) {
+        db.Games.findAll({
+            where: {
+                sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
+                active: true
+            }
+        }).then(function(games) {
+            for (var s in sports) {
+                if (sports[s].sport === req.query.sport) {
+                    sports[s].chosen = true;
+                }
+            }
+        });
+    }
+
+    var sportsObj = {
+        sports: sports
+    };
+    res.render("index", sportsObj);
 });
 
 router.get("/profile/:username?", function(req, res) {
@@ -84,7 +88,7 @@ router.post("/index", function(req, res) {
         maxNumPlayers: req.body.num
     }).then(function() {
         console.log("Game added")
-        res.redirect("/index/:sport?");
+        res.redirect("/index");
     });
 });
 

@@ -19,9 +19,13 @@
             color: red;
         }
         
+        .btn {
+            margin-bottom: 50px;
+        }
+        
         .btn-danger {
             height: 50px;
-            margin: auto auto;
+            margin: auto;
         }
         
         .btn-success {
@@ -45,7 +49,7 @@
         }
         
         #searchbtn {
-            margin: 0 auto;
+            margin: 10px auto;
         }
         
         select {
@@ -55,6 +59,37 @@
         #map {
             width: 100%;
             height: 400px;
+        }
+        
+        .modal-content {
+            padding: 20px;
+        }
+        
+        .modal-content input,
+        .modal-content button {
+            margin-top: 10px
+        }
+        
+        .rightLbl {
+            margin-left: 20px
+        }
+        
+        #maxPlayers {
+            width: 10%;
+        }
+        
+        .modal-content form {
+            text-align: center;
+        }
+        
+        .modal-content button {
+            margin-top: 20px;
+            width: 45%
+        }
+        
+        .modal-content p {
+            text-align: center;
+            font-size: 12px;
         }
         
         @media only screen and (max-width: 768px) {
