@@ -1,5 +1,6 @@
+var Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  var Games = sequelize.define("games", {
+  var Games = sequelize.define("Games", {
     location: {
       type: Sequelize.STRING, allowNull: false
     },

@@ -1,14 +1,21 @@
 {
+  "development": {
+    "username": "root",
+    "password": "Brevoun@17",
+    "database": "todolist",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
   "games": {
     "username": "root",
-    "password": "goyanks101",
+    "password": "Brevoun@17",
     "database": "pickup_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "users": {
     "username": "root",
-    "password": "goyanks101",
+    "password": "Brevoun@17",
     "database": "pickup_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
