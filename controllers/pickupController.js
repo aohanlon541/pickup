@@ -15,23 +15,38 @@ router.get("/", function(req, res) {
     res.render("logIn");
 });
 
+router.post('/login', function(req, res) {
+    db.Users.findAll({
+      username: req.body.username,
+      password: req.body.password
+        }).then(function(success, err) {
+            if (err) {
+              alert("Wrong username or password")
+            }
+            else {
+            console.log("Logged in as " + req.body.username);
+            res.redirect("index");
+          }
+  });
+});
+
 router.get("/signup", function(req, res) {
     res.render("signup");
 });
 
 router.post("/signup", function(req, res) {
-  console.log("here");
-  db.Users.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    username: req.body.userName,
-    email: req.body.email,
-    password: req.body.password,
-    imageUrl: req.body.imageUrl
-  }).then( 
-  function() {
-    res.redirect("index");
-  });
+    console.log("here");
+    db.Users.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+        imageUrl: req.body.imageUrl
+    }).then(
+        function() {
+            res.redirect("index");
+        });
 });
 
 router.get("/index/:sport?", function(req, res) {
@@ -105,10 +120,6 @@ router.post("/index", function(req, res) {
         res.redirect("/index");
     });
 });
-
-
-
-
 
 
 
