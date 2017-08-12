@@ -2,21 +2,7 @@ var express = require('express');
 var path = require('path');
 var db = require('../models/index.js');
 
-// import the users db
-
 var router = express.Router();
-
-// var games = require('../models/tables.js').Games;
-
-// var set up to fill in html, export from a js page?
-var games = [
-        // how its set up with hard code info
-        { img: 'img/basketball.png', parkName: "tweetles park", sport: "dumb-ball", playerNum: "8" },
-
-    ]
-    // router.get("/index", function (req,res){
-    //   res.render("index",{game:games});
-    // });
 
 // load login page
 router.get("/", function(req, res) {
@@ -61,27 +47,8 @@ router.get("/index/:sport?", function(req, res) {
         }
     ];
 
-    if (req.query.sport !== undefined) {
-        db.Games.findAll({
-            where: {
-                sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
-                active: true
-            }
-        }).then(function(games) {
-            for (var s in sports) {
-                if (sports[s].sport === req.query.sport) {
-                    sports[s].chosen = true;
-                }
-            }
-        });
-    }
+  var activeGames = [];
 
-<<<<<<< HEAD
-    var sportsObj = {
-        sports: sports
-    };
-    res.render("index", sportsObj);
-=======
   if(req.query.sport !== undefined) {
       db.Games.findAll({
         where: {
@@ -94,15 +61,24 @@ router.get("/index/:sport?", function(req, res) {
             sports[s].chosen = true;
           }
         }
-        console.log(games);
+
+        for(var g in games) {
+          var data = games[g].dataValues;
+          var game = {
+            parkName: data.location,
+            sport: data.sport,
+            numPlayers: data.activePlayers
+          };
+          activeGames.push(game);
+        }
       });
   }
   
   var sportsObj = {
-    sports: sports
+    sports: sports,
+    activeGames: activeGames
   };
   res.render("index", sportsObj);
->>>>>>> 974a48283bc4da8b2ab78890eba3e55659a63e23
 });
 
 router.get("/profile/:username?", function(req, res) {
