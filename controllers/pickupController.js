@@ -1,6 +1,8 @@
 var express = require('express');
 var path = require('path');
-var db = require('../models');
+var db = require('../models/index.js');
+
+// import the users db
 
 var router = express.Router();
 
@@ -26,13 +28,18 @@ router.get("/signup", function(req, res) {
 });
 
 router.post("/signup", function(req, res) {
-    profile.create([
-        "firstName", "lastName", "userName", "email", "password", "imageUrl"
-    ], [
-        req.body.firstName, req.body.lastName, req.body.userName, req.body.email, req.body.passweord, req.body.imageUrl
-    ], function() {
-        res.redirect("/logIn");
-    });
+  console.log("here");
+  db.Users.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    username: req.body.userName,
+    email: req.body.email,
+    password: req.body.password,
+    imageUrl: req.body.imageUrl
+  }).then( 
+  function() {
+    res.redirect("index");
+  });
 });
 
 router.get("/index/:sport?", function(req, res) {
@@ -69,10 +76,33 @@ router.get("/index/:sport?", function(req, res) {
         });
     }
 
+<<<<<<< HEAD
     var sportsObj = {
         sports: sports
     };
     res.render("index", sportsObj);
+=======
+  if(req.query.sport !== undefined) {
+      db.Games.findAll({
+        where: {
+          sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
+          active: true
+        }
+      }).then(function(games){
+        for(var s in sports) {
+          if(sports[s].sport === req.query.sport) {
+            sports[s].chosen = true;
+          }
+        }
+        console.log(games);
+      });
+  }
+  
+  var sportsObj = {
+    sports: sports
+  };
+  res.render("index", sportsObj);
+>>>>>>> 974a48283bc4da8b2ab78890eba3e55659a63e23
 });
 
 router.get("/profile/:username?", function(req, res) {
@@ -85,6 +115,7 @@ router.post("/index", function(req, res) {
         location: req.body.park,
         sport: req.body.sport,
         active: true,
+        activePlayers: 1,
         maxNumPlayers: req.body.num
     }).then(function() {
         console.log("Game added")

@@ -12,7 +12,8 @@ create table pickup_db.users(
 	password varchar(30) not null, 
 	imageUrl varchar(300), 
 	numWins integer(10), 
-	numLosses integer(10)
+	numLosses integer(10),
+	inGame boolean
 	);
 
 
@@ -34,13 +35,14 @@ insert into pickup_db.users (firstName, lastName, email, username, password, ima
 
 
 /*create the games table in pickup_db*/
-create table games(  
+create table games(
+	id integer(10) auto_increment primary key NOT NUll,  
 	location varchar(50), 
 	sport varchar(30), 
-	active boolean, 
+	active boolean,
+	activePlayers integer(30), 
 	maxNumPlayers integer(30), 
-	start datetime, 
-	end datetime );
+	createdAt TIMESTAMP);
 
 
 /*insert default values into table games*/
