@@ -18,10 +18,10 @@ router.post('/login', function(req, res) {
               alert("Wrong username or password")
             }
             else {
-            console.log("works");
-            res.redirect("/index");
-            }
-      }); 
+            console.log("Logged in as " + req.body.username);
+            res.redirect("index");
+          }
+  });
 });
 
 router.get("/signup", function(req, res) {
@@ -114,7 +114,6 @@ router.post("/index", function(req, res) {
     });
 });
 
- 
 
 
 

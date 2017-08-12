@@ -1,6 +1,3 @@
-/*create the mysql database*/
-create database pickup_db
-
 
 /*create the users table*/
 create table pickup_db.users(  
@@ -17,7 +14,7 @@ create table pickup_db.users(
 	);
 
 
-ALTER TABLE users ADD UNIQUE (username)
+ALTER TABLE users ADD UNIQUE (username);
 
 /*insert default values into table users*/
 insert into pickup_db.users (firstName, lastName, email, username, password, imageUrl, numWins, numLosses) 
@@ -57,5 +54,3 @@ insert into games (location, sport, active, maxNumPlayers, start, end)
 	("pease park", "volleyball", false, 8, "2017-12-12 14:000", null), 
 	("zilker park", "volleyball", false, 8, "2017-09-12 12:030", null), 
 	("auditorium shores", "ultimate frisbee", false, 4, "2017-11-08 18:000", null);
-
-

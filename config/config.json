@@ -8,14 +8,14 @@
     },
     "games": {
         "username": "root",
-        "password": "Brevoun@17",
+        "password": "3037775643",
         "database": "pickup_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "users": {
         "username": "root",
-        "password": "Brevoun@17",
+        "password": "3037775643",
         "database": "pickup_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
