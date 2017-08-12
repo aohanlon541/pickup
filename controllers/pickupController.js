@@ -28,18 +28,18 @@ router.get("/signup", function(req, res) {
 });
 
 router.post("/signup", function(req, res) {
-  console.log("here");
-  db.Users.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    username: req.body.userName,
-    email: req.body.email,
-    password: req.body.password,
-    imageUrl: req.body.imageUrl
-  }).then( 
-  function() {
-    res.redirect("index");
-  });
+    console.log("here");
+    db.Users.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+        imageUrl: req.body.imageUrl
+    }).then(
+        function() {
+            res.redirect("index");
+        });
 });
 
 router.get("/index/:sport?", function(req, res) {
@@ -73,36 +73,14 @@ router.get("/index/:sport?", function(req, res) {
                     sports[s].chosen = true;
                 }
             }
+            console.log(games);
         });
     }
 
-<<<<<<< HEAD
     var sportsObj = {
         sports: sports
     };
     res.render("index", sportsObj);
-=======
-  if(req.query.sport !== undefined) {
-      db.Games.findAll({
-        where: {
-          sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
-          active: true
-        }
-      }).then(function(games){
-        for(var s in sports) {
-          if(sports[s].sport === req.query.sport) {
-            sports[s].chosen = true;
-          }
-        }
-        console.log(games);
-      });
-  }
-  
-  var sportsObj = {
-    sports: sports
-  };
-  res.render("index", sportsObj);
->>>>>>> 974a48283bc4da8b2ab78890eba3e55659a63e23
 });
 
 router.get("/profile/:username?", function(req, res) {
@@ -123,9 +101,42 @@ router.post("/index", function(req, res) {
     });
 });
 
+router.post('/login', function(req, res) {
+    req.assert('username', 'Please fill the username').notEmpty();
+    req.assert('password', 'Please fill the password').notEmpty();
+    var errors = req.validationErrors();
+    if (!errors) {
+        v_user = req.sanitize('username').escape().trim();
+        v_pass = req.sanitize('password').escape().trim();
 
+        db.Users.fineOne({
+            username: v_user,
+            password: v_pass
+        }).then;
+    }
+});
 
+// 			var query = connection.query('select * from user where the_email="'+v_email+'" and the_password=md5("'+v_pass+), function(err,rows) {
+// 				if(err)
+// 				{
 
+// 					var errornya  = ("Error Selecting : %s ",err.code );  
+// 					console.log(err.code);
+// 					req.flash('msg_error', errornya); 
+// 					res.redirect('/login'); 
+// 				}else
+// 				{
+// 					if(rows.length <=0)
+// 					{
+
+// 						req.flash('msg_error', "Wrong email address or password. Try again."); 
+// 						res.redirect('/login');
+// 					}
+//         }
+
+// }
+// });
+// });
 
 
 
