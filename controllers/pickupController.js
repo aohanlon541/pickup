@@ -69,6 +69,7 @@ router.get("/index/:sport?", function(req, res) {
             sports[s].chosen = true;
           }
         }
+        console.log(games);
       });
   }
   
@@ -88,10 +89,11 @@ router.post("/index", function(req, res) {
         location: req.body.park,
         sport: req.body.sport,
         active: true,
+        activePlayers: 1,
         maxNumPlayers: req.body.num
     }).then(function() {
         console.log("Game added")
-        res.redirect("/index/:sport?");
+        res.redirect("/index");
     });
 });
 
