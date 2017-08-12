@@ -50,7 +50,8 @@
     
     {{#each activeGames}}
         <div class="game">
-            <img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" width="15%" height="15%">
+            <!--<img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" width="15%" height="15%">-->
+            <img src="img/{{sport}}.png" width="15%" height="15%">
             <div class="pickUpInfo">
                 <h2>{{parkName}}</h2>
                 <p>{{sport}}</p>
@@ -59,26 +60,6 @@
             <button type="button" class="btn btn-danger">Add Yourself to Game</button>
         </div>
     {{/each}}
-
-    <!--<div class="game">
-        <img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" width="15%" height="15%">
-        <div class="pickUpInfo">
-            <h2>Park Name</h2>
-            <p>Basketball</p>
-            <p><span class="playerNum">4</span> players are here</p>
-        </div>
-            <button type="button" class="btn btn-danger">Add Yourself to Game</button>
-    </div>
-
-    <div class="game">
-        <img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" width="15%" height="15%">
-        <div class="pickUpInfo">
-            <h2>Park Name</h2>
-            <p>Basketball</p>
-            <p><span class="playerNum">4</span> players are here</p>
-        </div>
-            <button type="button" class="btn btn-danger">Add Yourself to Game</button>
-    </div>-->
 
     <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg">Create New PickUp Game</button>
 
