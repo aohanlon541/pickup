@@ -10,19 +10,19 @@ var db = require('./models');
 
 //Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
-app.use(bodyParser.json({type: "application/vnd.api+json"}));
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //Static directory to be served
 app.use(express.static("public"));
 
 // block helpers
-// swaps out css files for correct pages
+// swaps out css files for correct page
 var hbs = exphbs({
     defaultLayout: 'main',
     helpers: {
-        section: function (name, options) {
+        section: function(name, options) {
             if (!this._sections) this._sections = {};
             this._sections[name] = options.fn(this);
             return null;
@@ -44,4 +44,3 @@ db.sequelize.sync({ force: false }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
