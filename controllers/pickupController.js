@@ -9,6 +9,21 @@ router.get("/", function(req, res) {
     res.render("logIn");
 });
 
+router.post('/login', function(req, res) {
+    db.Users.findAll({
+      username: req.body.username,
+      password: req.body.password
+        }).then(function(success, err) {
+            if (err) {
+              alert("Wrong username or password")
+            }
+            else {
+            console.log("works");
+            res.redirect("/index");
+            }
+      }); 
+});
+
 router.get("/signup", function(req, res) {
     res.render("signup");
 });
@@ -99,43 +114,7 @@ router.post("/index", function(req, res) {
     });
 });
 
-router.post('/login', function(req, res) {
-    req.assert('username', 'Please fill the username').notEmpty();
-    req.assert('password', 'Please fill the password').notEmpty();
-    var errors = req.validationErrors();
-    if (!errors) {
-        v_user = req.sanitize('username').escape().trim();
-        v_pass = req.sanitize('password').escape().trim();
-
-        db.Users.fineOne({
-            username: v_user,
-            password: v_pass
-        }).then;
-    }
-});
-
-// 			var query = connection.query('select * from user where the_email="'+v_email+'" and the_password=md5("'+v_pass+), function(err,rows) {
-// 				if(err)
-// 				{
-
-// 					var errornya  = ("Error Selecting : %s ",err.code );  
-// 					console.log(err.code);
-// 					req.flash('msg_error', errornya); 
-// 					res.redirect('/login'); 
-// 				}else
-// 				{
-// 					if(rows.length <=0)
-// 					{
-
-// 						req.flash('msg_error', "Wrong email address or password. Try again."); 
-// 						res.redirect('/login');
-// 					}
-//         }
-
-// }
-// });
-// });
-
+ 
 
 
 
