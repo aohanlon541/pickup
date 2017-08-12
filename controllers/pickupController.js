@@ -4,6 +4,12 @@ var db = require('../models/index.js');
 
 var router = express.Router();
 
+var user = {
+  userName: null,
+  loggedIn: false,
+  gameId: null
+};
+
 // load login page
 router.get("/", function(req, res) {
     res.render("logIn");
@@ -65,6 +71,7 @@ router.get("/index/:sport?", function(req, res) {
         for(var g in games) {
           var data = games[g].dataValues;
           var game = {
+            id: data.id,
             parkName: data.location,
             sport: data.sport,
             numPlayers: data.activePlayers
