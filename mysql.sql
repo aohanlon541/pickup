@@ -13,7 +13,7 @@ create table pickup_db.users(
 	imageUrl varchar(300), 
 	numWins integer(10), 
 	numLosses integer(10),
-	inGame boolean
+	gameId integer(10)
 	);
 
 

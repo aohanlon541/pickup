@@ -2,21 +2,7 @@ var express = require('express');
 var path = require('path');
 var db = require('../models/index.js');
 
-// import the users db
-
 var router = express.Router();
-
-// var games = require('../models/tables.js').Games;
-
-// var set up to fill in html, export from a js page?
-var games = [
-        // how its set up with hard code info
-        { img: 'img/basketball.png', parkName: "tweetles park", sport: "dumb-ball", playerNum: "8" },
-
-    ]
-    // router.get("/index", function (req,res){
-    //   res.render("index",{game:games});
-    // });
 
 // load login page
 router.get("/", function(req, res) {
@@ -43,19 +29,25 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/index/:sport?", function(req, res) {
-  var sports = [
-    {sport: 'Basketball',
-     chosen: false},
-     {sport: 'Ultimate',
-      chosen: false
-     },
-    {sport: 'Soccer',
-     chosen: false
-    },
-    {sport: 'Football',
-     chosen: false
-    }
-  ];
+    var sports = [{
+            sport: 'Basketball',
+            chosen: false
+        },
+        {
+            sport: 'Ultimate',
+            chosen: false
+        },
+        {
+            sport: 'Soccer',
+            chosen: false
+        },
+        {
+            sport: 'Football',
+            chosen: false
+        }
+    ];
+
+  var activeGames = [];
 
   if(req.query.sport !== undefined) {
       db.Games.findAll({
@@ -69,12 +61,22 @@ router.get("/index/:sport?", function(req, res) {
             sports[s].chosen = true;
           }
         }
-        console.log(games);
+
+        for(var g in games) {
+          var data = games[g].dataValues;
+          var game = {
+            parkName: data.location,
+            sport: data.sport,
+            numPlayers: data.activePlayers
+          };
+          activeGames.push(game);
+        }
       });
   }
   
   var sportsObj = {
-    sports: sports
+    sports: sports,
+    activeGames: activeGames
   };
   res.render("index", sportsObj);
 });
