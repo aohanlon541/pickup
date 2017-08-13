@@ -36,7 +36,7 @@ var hbs = exphbs({
 app.engine('handlebars', hbs);
 app.set('view engine', 'handlebars');
 
-var routes = require('./controllers/pickupController.js');
+var routes = require('./controllers/pickupController.js').Router;
 app.use('/', routes);
 
 db.sequelize.sync({ force: false }).then(function() {

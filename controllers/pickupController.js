@@ -81,24 +81,9 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/index/:sport?", function(req, res) {
-    // var sports = [{
-    //         sport: 'Basketball',
-    //         chosen: false
-    //     },
-    //     {
-    //         sport: 'Ultimate',
-    //         chosen: false
-    //     },
-    //     {
-    //         sport: 'Soccer',
-    //         chosen: false
-    //     },
-    //     {
-    //         sport: 'Football',
-    //         chosen: false
-    //     }
-    // ];
+  // if(user.loggedIn) {
 
+  // }
   if(req.query.sport !== undefined) {
       db.Games.findAll({
         where: {
@@ -135,6 +120,11 @@ router.get("/index/:sport?", function(req, res) {
   res.render("index", sportsObj);
 });
 
+router.get("/userStatus", function(req, res) {
+    res.json(user);
+});
+
+
 router.get("/profile/:username?", function(req, res) {
     res.render("profile");
 });
@@ -153,7 +143,11 @@ router.post("/index", function(req, res) {
     });
 });
 
+router.post("/index/:sport?/addUser", function(req, res) {
+  
+});
 
 
 
-module.exports = router;
+
+module.exports.Router = router;
