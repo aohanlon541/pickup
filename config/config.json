@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "development": {
     "username": "root",
     "password": "test",
@@ -21,27 +20,4 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
-=======
-    "development": {
-        "username": "root",
-        "password": "3037775643",
-        "database": "pickup_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "games": {
-        "username": "root",
-        "password": "3037775643",
-        "database": "pickup_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "users": {
-        "username": "root",
-        "password": "3037775643",
-        "database": "pickup_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    }
->>>>>>> c7a7b7286765c33c4341f9ae0d436e7297974354
 }
