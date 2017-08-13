@@ -36,14 +36,13 @@ insert into pickup_db.users (firstName, lastName, email, username, password, ima
 
 /*create the games table in pickup_db*/
 create table games(
-	id integer(10) auto_increment primary key NOT NUll,  
-	location varchar(50), 
-	sport varchar(30), 
-	active boolean,
-	activePlayers integer(30), 
-	maxNumPlayers integer(30), 
-	createdAt TIMESTAMP);
-
+    id integer(10) auto_increment primary key NOT NUll,  
+    location varchar(50), 
+    sport varchar(30), 
+    active boolean, 
+    maxNumPlayers integer(30), 
+    start datetime, 
+    end datetime );
 
 /*insert default values into table games*/
 insert into games (location, sport, active, maxNumPlayers, start, end) 
