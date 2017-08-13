@@ -10,24 +10,55 @@ var user = {
   gameId: null
 };
 
+var sports = [{
+    sport: 'Basketball',
+    chosen: false
+  },{
+    sport: 'Ultimate',
+    chosen: false
+  },{
+    sport: 'Soccer',
+    chosen: false
+  },{
+    sport: 'Football',
+    chosen: false
+  }
+];
+
+var activeGames = [];
+
+var error = {};
+
 // load login page
 router.get("/", function(req, res) {
     res.render("logIn");
 });
 
 router.post('/login', function(req, res) {
+    var obj = {
+      user: user,
+      sports: sports,
+      activeGames: activeGames
+    };
+
     db.Users.findAll({
-      username: req.body.username,
-      password: req.body.password
-        }).then(function(success, err) {
-            if (err) {
-              alert("Wrong username or password")
-            }
-            else {
-            console.log("Logged in as " + req.body.username);
-            res.redirect("index");
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }}).then(function(result, err) {
+          if(result.length == 0 || err) {
+            error.message = "Wrong username or password. Try Again";
+            console.log(error);
+            res.render("login", error);
+          } else {
+            var userData = result[0].dataValues;
+            user.userName = userData.username;
+            user.loggedIn = true;
+            user.gameId = userData.gameId;
+            obj.user = user;
+            res.render("index", obj);
           }
-  });
+      });
 });
 
 router.get("/signup", function(req, res) {
@@ -50,25 +81,23 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/index/:sport?", function(req, res) {
-    var sports = [{
-            sport: 'Basketball',
-            chosen: false
-        },
-        {
-            sport: 'Ultimate',
-            chosen: false
-        },
-        {
-            sport: 'Soccer',
-            chosen: false
-        },
-        {
-            sport: 'Football',
-            chosen: false
-        }
-    ];
-
-  var activeGames = [];
+    // var sports = [{
+    //         sport: 'Basketball',
+    //         chosen: false
+    //     },
+    //     {
+    //         sport: 'Ultimate',
+    //         chosen: false
+    //     },
+    //     {
+    //         sport: 'Soccer',
+    //         chosen: false
+    //     },
+    //     {
+    //         sport: 'Football',
+    //         chosen: false
+    //     }
+    // ];
 
   if(req.query.sport !== undefined) {
       db.Games.findAll({
@@ -80,6 +109,8 @@ router.get("/index/:sport?", function(req, res) {
         for(var s in sports) {
           if(sports[s].sport === req.query.sport) {
             sports[s].chosen = true;
+          } else {
+            sports[s].chosen = false;
           }
         }
 
@@ -97,6 +128,7 @@ router.get("/index/:sport?", function(req, res) {
   }
   
   var sportsObj = {
+    user: user,
     sports: sports,
     activeGames: activeGames
   };
