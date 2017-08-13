@@ -27,7 +27,12 @@
             height: 50px;
             margin: auto;
         }
-        
+
+        .btn-primary {
+            height: 50px;
+            margin: auto;
+        }   
+
         .btn-success {
             width: 92%;
             text-align: center;
