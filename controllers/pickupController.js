@@ -76,18 +76,17 @@ router.post("/signup", function(req, res) {
         imageUrl: req.body.imageUrl
     }).then(
         function() {
+          //Add object to render
             res.redirect("index");
         });
 });
 
 router.get("/index/:sport?", function(req, res) {
-  // if(user.loggedIn) {
-
-  // }
   if(req.query.sport !== undefined) {
+      var sportQuery = req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1);
       db.Games.findAll({
         where: {
-          sport: req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1),
+          sport: sportQuery,
           active: true
         }
       }).then(function(games){
@@ -109,28 +108,53 @@ router.get("/index/:sport?", function(req, res) {
           };
           activeGames.push(game);
         }
+
+        var sportsObj = {
+          user: user,
+          sports: sports,
+          activeGames: activeGames
+        };
+
+        res.render("index", sportsObj);
+        activeGames = [];
       });
-  }
-  
-  var sportsObj = {
-    user: user,
-    sports: sports,
-    activeGames: activeGames
-  };
-  res.render("index", sportsObj);
+    } else {
+      res.render("index", {sports: sports});
+    }
 });
 
 router.get("/userStatus", function(req, res) {
     res.json(user);
 });
 
+router.post("/index/addUserToGame", function(req, res) {
+    db.Games.increment(
+        'activePlayers',
+        {where: {id: req.body.gameId}}
+    ).then(function() {
+      user.gameId = req.body.gameId;
+      res.sendStatus(200);
+    }).catch(function (err) {
+      res.sendStatus(500);
+    });
+});
+
+router.post("/index/removeUserFromGame", function(req, res) {
+    db.Games.findById(req.body.gameId).then(games => {
+       return games.decrement('activePlayers', {by: 1})
+    }).then(function() {
+       user.gameId = null;
+       res.sendStatus(200);
+    }).catch(function (err) {
+       res.sendStatus(500);
+    })
+});
 
 router.get("/profile/:username?", function(req, res) {
     res.render("profile");
 });
 
-router.post("/index", function(req, res) {
-    console.log(req.body);
+router.post("/index/create", function(req, res) {
     db.Games.create({
         location: req.body.park,
         sport: req.body.sport,
@@ -138,13 +162,9 @@ router.post("/index", function(req, res) {
         activePlayers: 1,
         maxNumPlayers: req.body.num
     }).then(function() {
-        console.log("Game added")
+        console.log("Game added");
         res.redirect("/index");
     });
-});
-
-router.post("/index/:sport?/addUser", function(req, res) {
-  
 });
 
 

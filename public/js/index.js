@@ -5,11 +5,11 @@ var user = {
 };
 
 $(document).ready(function(e) {
-    $.get("/userStatus", {}, function(data, status) {
-        console.log(data, status);
-        user.userName = data.userName;
-        user.loggedIn = data.loggedIn;
-        user.gameId = data.gameId;
+    $.get( "/userStatus", {} )
+        .done(function( data ) {
+            user.userName = data.userName;
+            user.loggedIn = data.loggedIn;
+            user.gameId = data.gameId;
     });
 
     $('.btn-primary').on('click', function(e) {
@@ -17,10 +17,19 @@ $(document).ready(function(e) {
             //As an HTTP redirect (back button will not work )
             window.location.replace("/");
         } else {
-            console.log('Adding user to game');
-            // $.post("/addUserToGame", user, function(data, status) {
-
-            // });
+            if(user.gameId === null) {
+                user.gameId = $(this).val();
+                $.post("/index/addUserToGame", user, function(data, status) {
+                    if(data == 'OK') {
+                        $('#'+user.gameId).text(parseInt($('#'+user.gameId).text()) + 1);
+                    } else {
+                        console.warn(status);
+                        user.gameId = null;
+                    }
+                });
+            } else {
+                console.warn("Can't add to game");
+            }
         }
     });
 
@@ -29,10 +38,18 @@ $(document).ready(function(e) {
             //As an HTTP redirect (back button will not work )
             window.location.replace("/");
         } else {
-            console.log('Removing user from game');
-            // $.post("/removeUserFromGame", user, function(data, status) {
-
-            // });
+            if(user.gameId !== null) {
+                $.post("/index/removeUserFromGame", user, function(data, status) {
+                    if(data == 'OK') {
+                        $('#'+user.gameId).text(parseInt($('#'+user.gameId).text()) - 1);
+                        user.gameId = null;
+                    } else {
+                        console.warn(status);
+                    }
+                });
+            } else {
+                console.warn("Can't leave game");
+            }
         }
     });
 });

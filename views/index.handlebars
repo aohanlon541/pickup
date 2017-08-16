@@ -50,12 +50,11 @@
     
     {{#each activeGames}}
         <div class="game">
-            <!--<img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/basketball.png" width="15%" height="15%">-->
             <img src="img/{{sport}}.png" width="15%" height="15%">
             <div class="pickUpInfo">
                 <h2>{{parkName}}</h2>
                 <p>{{sport}}</p>
-                <p><span class="playerNum">{{numPlayers}}</span> players are here</p>
+                <p><span id="{{id}}" class="playerNum">{{numPlayers}}</span> players are here</p>
             </div>
             <button type="button" class="btn btn-primary" value={{id}}>Add Yourself to Game</button>
             <button type="button" class="btn btn-danger" value={{id}}>Remove Yourself to Game</button>
@@ -68,7 +67,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <h2>Create a new game</h2>
-                <form role="select" action="/index" method="POST" enctype='application/json'>
+                <form role="select" action="/index/create" method="POST" enctype='application/json'>
                     <label>Sport:</label>
                     <select name="sport">
                         <option value="basketball">Basketball</option>
