@@ -13,11 +13,11 @@
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
-    "users": {
-        "username": "root",
-        "password": "3037775643",
+    "production": {
+        "username": "oic6i3nzfc3mb2lp",
+        "password": "jkz3pk49fnb15sc1",
         "database": "pickup_db",
-        "host": "127.0.0.1",
+        "host": "cdm1s48crk8itlnr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
 }

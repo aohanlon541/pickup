@@ -10,7 +10,9 @@ create table pickup_db.users(
 	imageUrl varchar(300), 
 	numWins integer(10), 
 	numLosses integer(10),
-	gameId integer(10)
+	gameId integer(10),
+    createdAt TIMESTAMP NOT NULL,
+    PRIMARY KEY(id)
 	);
 
 
@@ -39,7 +41,10 @@ create table games(
 	active boolean,
 	activePlayers integer(30), 
 	maxNumPlayers integer(30), 
-	createdAt TIMESTAMP);
+	createdAt TIMESTAMP NOT NULL,
+	PRIMARY KEY(id)
+
+    );
 
 
 /*insert default values into table games*/
