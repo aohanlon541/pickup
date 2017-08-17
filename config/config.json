@@ -16,7 +16,7 @@
     "production": {
         "username": "oic6i3nzfc3mb2lp",
         "password": "jkz3pk49fnb15sc1",
-        "database": "pickup_db",
+        "database": "eb8u7skj2gm5k9ts",
         "host": "cdm1s48crk8itlnr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
