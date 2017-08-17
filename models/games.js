@@ -11,10 +11,11 @@ module.exports = function(sequelize, DataTypes) {
       type: Sequelize.BOOLEAN, allowNull: false
     },
     activePlayers: {
-      type: Sequelize.INTEGER, allowNull: false
+      type: Sequelize.INTEGER, allowNull: false,
+      defaultValue: 0
     },
     maxNumPlayers: {
-      type: Sequelize.INTEGER, allowNull: false,
+      type: Sequelize.INTEGER, allowNull: false
     },
     createdAt: {
       type: DataTypes.DATE,
