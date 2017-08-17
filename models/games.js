@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     sport: {
       type: Sequelize.STRING, allowNull: false
     },
-    active: {
+    activePlayers: {
       type: Sequelize.BOOLEAN, allowNull: false
     },
     activePlayers: {
