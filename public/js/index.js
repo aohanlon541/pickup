@@ -1,19 +1,14 @@
 var user = {
   userName: null,
-  loggedIn: false,
   gameId: null
 };
 
 $(document).ready(function(e) {
-    $.get( "/userStatus", {} )
-        .done(function( data ) {
-            user.userName = data.userName;
-            user.loggedIn = data.loggedIn;
-            user.gameId = data.gameId;
-    });
+
+    user.userName = sessionStorage["pickupUserName"];
 
     $('.btn-primary').on('click', function(e) {
-        if(!user.loggedIn) {
+        if(!user.userName) {
             //As an HTTP redirect (back button will not work )
             window.location.replace("/");
         } else {
@@ -34,7 +29,7 @@ $(document).ready(function(e) {
     });
 
     $('.btn-danger').on('click', function(e) {
-        if(!user.loggedIn) {
+        if(!user.userName) {
             //As an HTTP redirect (back button will not work )
             window.location.replace("/");
         } else {
@@ -52,4 +47,5 @@ $(document).ready(function(e) {
             }
         }
     });
+
 });

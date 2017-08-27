@@ -9,19 +9,20 @@
 <div class="panel panel-default">
         <div class="panel-body">
             <h2>Login!</h2>
-            <form action="/login" method="post" enctype= "application/json">
+            {{!-- <form action="/login" method="post" enctype= "application/json"> --}}
                 <div class="form-group">
                     <label for="username">Username </label>
-                    <input id="username" type="username" class="form-control" id="usernameInput" name="username" placeholder="Username">
+                    <input type="username" class="form-control" id="usernameInput" name="username" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password">
                 </div>
-                <h4>{{message}}</h4>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <h4 id="error">{{message}}</h4>
+                {{!-- <button type="submit" class="btn btn-success">Submit</button> --}}
+                <button id="login" class="btn btn-success" >Submit</button>
                 <p><a href="signup">Click here</a> to sign up!</p>
-            </form>
+            {{!-- </form> --}}
         </div>
 </div>
 

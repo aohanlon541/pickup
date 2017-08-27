@@ -2,8 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 
-
 var app = express();
+
 var PORT = process.env.PORT || 3000;
 
 var db = require('./models');
@@ -29,9 +29,6 @@ var hbs = exphbs({
         }
     }
 });
-
-//db.sequelize.sync({ force: true }).then(function)
-
 
 app.engine('handlebars', hbs);
 app.set('view engine', 'handlebars');

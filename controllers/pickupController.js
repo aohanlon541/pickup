@@ -4,30 +4,7 @@ var db = require('../models/index.js');
 
 var router = express.Router();
 
-var user = {
-  userName: null,
-  loggedIn: false,
-  gameId: null
-};
-
-var sports = [{
-    sport: 'Basketball',
-    chosen: false
-  },{
-    sport: 'Ultimate',
-    chosen: false
-  },{
-    sport: 'Soccer',
-    chosen: false
-  },{
-    sport: 'Football',
-    chosen: false
-  }
-];
-
-var activeGames = [];
-
-var error = {};
+var sports = [];
 
 // load login page
 router.get("/", function(req, res) {
@@ -36,10 +13,10 @@ router.get("/", function(req, res) {
 
 router.post('/login', function(req, res) {
     var obj = {
-      user: user,
-      sports: sports,
-      activeGames: activeGames
+      user: null
     };
+
+    var error = {};
 
     db.Users.findAll({
       where: {
@@ -47,16 +24,12 @@ router.post('/login', function(req, res) {
         password: req.body.password
       }}).then(function(result, err) {
           if(result.length == 0 || err) {
-            error.message = "Wrong username or password. Try Again";
-            console.log(error);
-            res.render("login", error);
+            var error = {message:"Wrong username or password. Try Again"};
+            res.json(error);
           } else {
             var userData = result[0].dataValues;
-            user.userName = userData.username;
-            user.loggedIn = true;
-            user.gameId = userData.gameId;
-            obj.user = user;
-            res.render("index", obj);
+            obj.user = userData.username;;
+            return res.json(obj);
           }
       });
 });
@@ -66,7 +39,6 @@ router.get("/signup", function(req, res) {
 });
 
 router.post("/signup", function(req, res) {
-    console.log("here");
     db.Users.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -82,7 +54,21 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/index/:sport?", function(req, res) {
+
+  
+  var sports = [{
+    sport: 'Basketball'
+    },{
+      sport: 'Ultimate'
+    },{
+      sport: 'Soccer'
+    },{
+      sport: 'Football'
+    }
+  ];
+
   if(req.query.sport !== undefined) {
+      var activeGames = [];
       var sportQuery = req.query.sport.charAt(0).toLowerCase() + req.query.sport.slice(1);
       db.Games.findAll({
         where: {
@@ -110,29 +96,26 @@ router.get("/index/:sport?", function(req, res) {
         }
 
         var sportsObj = {
-          user: user,
           sports: sports,
           activeGames: activeGames
         };
 
         res.render("index", sportsObj);
-        activeGames = [];
       });
     } else {
       res.render("index", {sports: sports});
     }
 });
 
-router.get("/userStatus", function(req, res) {
-    res.json(user);
-});
+// router.get("/userStatus", function(req, res) {
+//     res.json({});
+// });
 
 router.post("/index/addUserToGame", function(req, res) {
     db.Games.increment(
         'activePlayers',
         {where: {id: req.body.gameId}}
     ).then(function() {
-      user.gameId = req.body.gameId;
       res.sendStatus(200);
     }).catch(function (err) {
       res.sendStatus(500);
@@ -143,7 +126,6 @@ router.post("/index/removeUserFromGame", function(req, res) {
     db.Games.findById(req.body.gameId).then(games => {
        return games.decrement('activePlayers', {by: 1})
     }).then(function() {
-       user.gameId = null;
        res.sendStatus(200);
     }).catch(function (err) {
        res.sendStatus(500);
@@ -162,7 +144,6 @@ router.post("/index/create", function(req, res) {
         activePlayers: 1,
         maxNumPlayers: req.body.num
     }).then(function() {
-        console.log("Game added");
         res.redirect("/index");
     });
 });
