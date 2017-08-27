@@ -1,27 +1,4 @@
 {
-<<<<<<< HEAD
-  "development": {
-    "username": "root",
-    "password": "test",
-    "database": "pickup_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "games": {
-    "username": "root",
-    "password": "test",
-    "database": "pickup_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "users": {
-    "username": "root",
-    "password": "test",
-    "database": "pickup_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-=======
     "development": {
         "username": "root",
         "password": "3037775643",
@@ -43,5 +20,4 @@
         "host": "cdm1s48crk8itlnr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
->>>>>>> 38d74926723c449d6aafaaf2a599076b8165d04d
 }
