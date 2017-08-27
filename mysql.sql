@@ -10,7 +10,9 @@ create table pickup_db.users(
 	imageUrl varchar(300), 
 	numWins integer(10), 
 	numLosses integer(10),
-	gameId integer(10)
+	gameId integer(10),
+    createdAt TIMESTAMP NOT NULL,
+    PRIMARY KEY(id)
 	);
 
 
@@ -33,13 +35,17 @@ insert into pickup_db.users (firstName, lastName, email, username, password, ima
 
 /*create the games table in pickup_db*/
 create table games(
-    id integer(10) auto_increment primary key NOT NUll,  
-    location varchar(50), 
-    sport varchar(30), 
-    active boolean, 
-    maxNumPlayers integer(30), 
-    start datetime, 
-    end datetime );
+	id integer(10) auto_increment primary key NOT NUll,  
+	location varchar(50), 
+	sport varchar(30), 
+	active boolean,
+	activePlayers integer(30), 
+	maxNumPlayers integer(30), 
+	createdAt TIMESTAMP NOT NULL,
+	PRIMARY KEY(id)
+
+    );
+
 
 /*insert default values into table games*/
 insert into games (location, sport, active, maxNumPlayers, start, end) 
